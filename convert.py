@@ -2,8 +2,6 @@ import csv, sys, getopt
 from datetime import datetime
 
 inputfile = ''
-f = ''
-csv_f = ''
 
 #Add microseconds to date/time
 def updateDateTime(x):
@@ -19,18 +17,16 @@ def updatePRI(x):
 #Load the input file and set global variables
 def loadCSV(inputfile):
     #print("Ready to load the file!")
-    global f
     f = open(inputfile)
-    global csv_f
     csv_f = csv.reader(f)
     next(csv_f)
     for row in csv_f:
         row[1] = updateDateTime(row[1])
-        print(row[1])
+        #print(row[1])
         row[2] = updatePRI(row[2])
-        print(row[2])
+        #print(row[2])
 
-
+    print("File processed and converted successfully!")
 
 def main(argv):
    try:
